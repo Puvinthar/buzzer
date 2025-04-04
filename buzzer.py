@@ -200,10 +200,10 @@ if st.session_state.logged_in and st.session_state.is_admin:
     
     col1, col2 = st.columns(2)
     with col1:
-        if st.button("🚀 Start Countdown", use_container_width=True):
+        if st.button(" Start Countdown", use_container_width=True):
             control_ref.update({"countdown": True})
     with col2:
-        if st.button("🔄 Reset Session", use_container_width=True):
+        if st.button("Reset Session", use_container_width=True):
             users = db.collection("users").stream()
             for user in users:
                 user.reference.update({"buzzed": False, "timestamp": None})
@@ -261,7 +261,7 @@ if st.session_state.logged_in and not st.session_state.is_admin:
         user_ref = db.collection("users").document(st.session_state.username)
         user_data = user_ref.get().to_dict()
         
-        if st.button("🔥 Buzz In!", disabled=countdown_active,
+        if st.button(" Buzz In!", disabled=countdown_active,
                     use_container_width=True, type="primary"):
             if not user_data.get("buzzed"):
                 user_ref.update({
